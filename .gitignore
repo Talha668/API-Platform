@@ -220,3 +220,4 @@ cython_debug/
 # Additional
 test_gateway.py
 .env.example
+test_rate_limiting.py

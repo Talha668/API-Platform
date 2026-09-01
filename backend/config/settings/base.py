@@ -46,6 +46,7 @@ LOCAL_APPS = [
     'apps.api_keys',
     'apps.gateway',
     'apps.api_logs',
+    'apps.rate_limiting',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'apps.gateway.middleware.APIKeyAuthenticationMiddleware',
     'apps.api_logs.middleware.RequestLoggingMiddleware',
+    'apps.rate_limiting.middleware.RateLimitMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -197,3 +199,21 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
+
+
+# Redis Configuration
+REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
+
+# Rate Limiting Configuration
+RATE_LIMIT = {
+    'DEFAULT_LIMIT': 100,  # Default requests per hour
+    'DEFAULT_WINDOW': 3600,  # 1 hour in seconds
+    'KEY_PREFIX': 'rate_limit',
+    'WHITELIST_PATHS': [
+        '/api/auth/login',
+        '/api/auth/register',
+        '/api/auth/refresh',
+        '/api/schema',
+        '/api/docs',
+    ],
+}

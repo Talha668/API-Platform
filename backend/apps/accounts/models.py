@@ -27,6 +27,15 @@ class User(AbstractUser):
     # Track user activity
     last_active_at = models.DateTimeField(default=timezone.now)
 
+    # Subscription tier
+    class Tier(models.TextChoices):
+        FREE = 'free', 'Free'
+        PRO = 'pro', 'PRO'
+        ENTERPRISE = 'enterprose', 'ENTERPRISE'
+
+    subscription_tier = models.CharField(_('subscription tier'), max_length=20, choices=Tier.choices, default=Tier.FREE, db_index=True)
+    subscription_ends_at = models.DateTimeField(_('subscription ends at'), blank=True, null=True)
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []    # Email and password are required by  default
 

@@ -13,9 +13,10 @@ urlpatterns = [
     path('api/projects', include('apps.projects.urls')),
     path('api/api-keys', include('apps.api_keys.urls')),
     path('api/api-logs/', include('apps.api_logs.urls')),
+    path('api/rate-limiting/', include('apps.rate_limiting.urls')),
     path('api/gateway/', include('apps.gateway.urls')),     # Internal management
     path('', include('apps.gateway.urls')),     # External API endpoints
-
+    
     # OpenAPI documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
