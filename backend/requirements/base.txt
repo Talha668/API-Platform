@@ -8,3 +8,4 @@ django-cors-headers==4.3.1
 django-redis==5.4.0
 redis==5.0.1
 celery==5.3.4
+recharts @radix-ui/react-tabs @radix-ui/react-select
