@@ -12,7 +12,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+
+
+env_path = BASE_DIR / '.env'
+print("Looking for .env at:", env_path)
+print("File exists:", env_path.exists())
+load_dotenv(env_path, override=True)
+print("ALLOWED_HOSTS after load:", repr(os.getenv('ALLOWED_HOSTS')))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')

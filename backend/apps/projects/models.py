@@ -6,7 +6,6 @@ from django.db.models import Avg, Sum, Count
 
 
 
-
 class Project(models.Model):
     """
     Model representing a user's API project.
