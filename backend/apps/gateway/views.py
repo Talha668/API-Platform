@@ -12,7 +12,7 @@ from .serializers import (
     ProjectAPIEnableSerializer
 )
 from apps.common.permissions import HasProjectAccess
-from authentication import ExternalAPIAuthentication
+from .authentication import ExternalAPIAuthentication
 from apps.common.permissions import HasProjectAccess
 
 

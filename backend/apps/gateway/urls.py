@@ -26,16 +26,16 @@ urlpatterns = [
 # External APIs 
 external_urlpatterns = [
     # Weather APIs
-    path('external/v1/weather', WeatherCurrentView.as_view(), name='weather-current'),
-    path('external/v1/weather/forecast', WeatherForecastView.as_view(), name='weather-forecast'),
+    path('external/v1/weather', views.WeatherCurrentView.as_view(), name='weather-current'),
+    path('external/v1/weather/forecast', views.WeatherForecastView.as_view(), name='weather-forecast'),
 
     # Task APIs
-    path('external/v1/tasks', TaskListView.as_view(), name='tasks-list'),
-    re_path(r'^external/v1/tasks/(?P<id>\d+)$', TaskDetailView.as_view(), name='task-detail'),
+    path('external/v1/tasks', views.TaskListView.as_view(), name='tasks-list'),
+    re_path(r'^external/v1/tasks/(?P<id>\d+)$', views.TaskDetailView.as_view(), name='task-detail'),
 
     # Currency APIs
-    path('external/v1/currencies', CurrencyListView.as_view(), name='currencies-list'),
-    path('external/v1/exchange-rates', ExchangeRateView.as_view(), name='exchange-rates'),
+    path('external/v1/currencies', views.CurrencyListView.as_view(), name='currencies-list'),
+    path('external/v1/exchange-rates', views.ExchangeRateView.as_view(), name='exchange-rates'),
 ]
 
 

@@ -3,6 +3,8 @@ from django.conf import settings
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.db.models import Avg, Sum, Count
+from apps.common.choices import SubscriptionTier
+
 
 
 
@@ -31,7 +33,7 @@ class Project(models.Model):
 
     # Rate limiting
     custom_rate_limit = models.IntegerField(_('custom rate limit per hour'), blank=True, null=True, help_text='Override default rate limit for this project')
-    tier = models.CharField(_('tier'), max_length=20, choices=settings.AUTH_USER_MODEL.Tier.choices, default=settings.AUTH_USER_MODEL.Tier.FREE, db_index=True)
+    tier = models.CharField(_('tier'), max_length=20, choices=SubscriptionTier.choices, default=SubscriptionTier.FREE, db_index=True)
     
     class Meta:
         db_table = 'projects'

@@ -1,8 +1,3 @@
-"""
-Django settings for the API Platform project.
-This is the base settings file that contains common configuration.
-Environment-specific settings should override these.
-"""
 import os
 from pathlib import Path
 from datetime import timedelta
@@ -13,13 +8,6 @@ load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
-
-
-env_path = BASE_DIR / '.env'
-print("Looking for .env at:", env_path)
-print("File exists:", env_path.exists())
-load_dotenv(env_path, override=True)
-print("ALLOWED_HOSTS after load:", repr(os.getenv('ALLOWED_HOSTS')))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -177,6 +165,8 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
