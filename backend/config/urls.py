@@ -10,8 +10,8 @@ urlpatterns = [
 
     # API endpoints
     path('api/auth/', include('apps.accounts.urls')),
-    path('api/projects', include('apps.projects.urls')),
-    path('api/api-keys', include('apps.api_keys.urls')),
+    path('api/projects/', include('apps.projects.urls')),
+    path('api/api-keys/', include('apps.api_keys.urls')),
     path('api/api-logs/', include('apps.api_logs.urls')),
     path('api/rate-limiting/', include('apps.rate_limiting.urls')),
     path('api/gateway/', include('apps.gateway.urls')),     # Internal management
