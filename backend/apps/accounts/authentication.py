@@ -87,6 +87,14 @@ def clear_jwt_cookies(response):
     """
     Helper function to clear JWT cookies from the response.
     """
-    response.delete_cookie(settings.JWT_ACCESS_COOKIE_NAME)
-    response.delete_cookie(settings.JWT_REFRESH_COOKIE_NAME)
+    response.delete_cookie(
+        key=settings.JWT_ACCESS_COOKIE_NAME,
+        path='/',
+        samesite=settings.JWT_COOKIE_SAMESITE,
+    )
+    response.delete_cookie(
+        key=settings.JWT_REFRESH_COOKIE_NAME,
+        path='/',
+        samesite=settings.JWT_COOKIE_SAMESITE,
+    )
     return response
