@@ -12,7 +12,7 @@ class RequestLog(models.Model):
     """
 
     # Relationship to project and API key
-    project = models.ForeignKey('projects.Project', on_delete=models.CASCADE, related_name='request_logs', verbose_name='Project')
+    project = models.ForeignKey('projects.Project', on_delete=models.SET_NULL, null=True, blank=True, related_name='request_logs', verbose_name='Project')
     api_key = models.ForeignKey('api_keys.APIKey', on_delete=models.SET_NULL, null=True, related_name='request_logs', verbose_name='API Key')
 
     # API details

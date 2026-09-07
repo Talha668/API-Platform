@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Project
+from apps.common.choices import SubscriptionTier
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -83,7 +84,7 @@ class ProjectCreateSerializer(serializers.ModelSerializer):
             owner=user,
             name=validated_data['name'],
             description=validated_data.get('description', ''),
-            tier=validated_data.get('tier', Project.Tier.FREE),
+            tier=validated_data.get('tier', SubscriptionTier.FREE),
             custom_rate_limit=validated_data.get('custom_rate_limit'),
         )
         
