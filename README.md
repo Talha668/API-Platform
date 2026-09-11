@@ -130,9 +130,9 @@ Development Phases
 
 ✅ Phase 4: React Dashboard
 
-📋 Phase 5: Webhooks
+✅ Phase 5: Webhooks
 
-📋 Phase 6: Testing
+✅ Phase 6: Testing
 
 Contributing
 Fork the repository
